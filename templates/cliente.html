@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat UNIP - APS Redes de Computadores</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Sistema de Mensagens da Secretaria de Estado do Meio Ambiente</h1>
+
+    <div id="home-view" class="view-container">
+        <section>
+            <p style="font-size: 1.1em; line-height: 1.6; text-align: center;">
+            Olá, seja bem-vindo ao chat. Aqui você poderá se comunicar de forma segura com todos os agentes de meio ambiente que estão trabalhando na mesma causa: o monitoramento das indústrias que estão causando poluição no rio Tietê. Envie mensagens, emojis e arquivos para compartilhar informações, se comunicar e se manter atualizado.
+            </p>
+        </section>
+        
+        <button id="go-to-chat-button" onclick="showView('chat')">Ir para o Chat</button>
+
+        <section>
+            <iframe width="100%" height="450"
+            src="https://www.youtube.com/embed/n6NJMDmGkPk"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </section>
+        <section>
+            <h2 style="text-align: center;">Sobre o Meio Ambiente e Nossa Causa</h2>
+            <p>Segundo a ANA (Agência Nacional de Águas), em 2019 o Brasil possuiu 83.450 quilômetros de rios poluídos.</p>
+            <p>A poluição das indústrias em rios é um grave problema ambiental, que leva não só à perda da vida marinha, mas também impacta a nossa saúde. Os efluentes (resíduos de origem da atividade, como a industrial) podem causar contaminação, que por sua vez, pode causar doenças como infecções gastrointestinais, cólera e hepatites.</p>
+            <p>Por isso, o tratamento e prevenção dos rios é tão importante para o meio ambiente. É crucial garantirmos que as indústrias estão fazendo o devido tratamento nos efluentes que produzem.</p>
+            <p>A conscientização é uma tarefa importante para evitar a poluição nos rios, assim, com menos pessoas poluindo, teremos mais rios saudáveis. Uma maneira para isso é informar as pessoas sobre:</p>
+            <ul>
+                <li>Não descarte o óleo de cozinha no ralo. Guarde o produto em uma garrafa e entregue para uma cooperativa para que possa ser transformado em sabão;</li>
+                <li>Não utilize pesticidas ou herbicidas nas plantas;</li>
+                <li>Jogue o lixo sempre em local adequado e amarre bem os sacos antes de pôr na lixeira;</li>
+                <li>Não jogue nenhum tipo de material, como sacolinhas plásticas e embalagens, em rios, lagos e mares;</li>
+                <li>Não descarte medicamentos ou outros materiais no vaso sanitário. Algumas farmácias fazem a coleta de remédios vencidos;</li>
+                <li>Evite a erosão do solo promovendo a cobertura vegetal nos locais com essa tendência;</li>
+                <li>Use menos produtos químicos para limpar a casa. Opte por produtos biodegradáveis.</li>
+            </ul>
+            <p>Vamos juntos trabalhar para melhorar e cuidar do nosso planeta.</p>
+        </section>
+    </div>
+
+<div id="chat-view" class="view-container">
+    <div id="nome-input-area">
+        <label for="nome">Seu nome e Cidade/Região: </label>
+        <input type="text" id="nome" placeholder="Ex: Marcos - Guarulhos" style="width: 300px; padding: 8px;">
+        <button onclick="connectAndGoToChat()" style="padding: 8px 15px;">Conectar ao Chat</button>
+        <p id="status-conexao" style="font-style: italic; color: red; margin-top: 10px;">Desconectado</p>
+    </div>
+
+    <div id="main-container">
+
+        <div id="online-users-panel"> <h3 style="display: flex; justify-content: space-between; align-items: center;">
+                👥 Usuários Online
+                <span id="online-user-count" style="background-color: #00796b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.9em;">0</span>
+            </h3>
+            <p id="nome-usuario-logado" style="font-weight: bold; margin-bottom: 10px; color: #004d40;"></p> <ul id="online-list">
+                </ul>
+        </div>
+
+        <div id="chat-panel">
+            <div id="chat-log"></div>
+            
+            <div id="input-container">
+                <div id="emoticon-popup"></div>
+
+                <div id="botoes-extras">
+                    <button onclick="toggleEmoticonPopup()">😊</button>
+                    <button onclick="document.getElementById('file-input').click()">📎</button>
+                </div>
+                
+                <input type="text" id="mensagem-input" placeholder="Digite sua mensagem/relatório" style="width: 80%;">
+                <button onclick="enviarMensagem()" style="padding: 10px 15px;">Enviar Relatório</button>
+            </div>
+
+            <form id="upload-form" style="display: none;">
+                <input type="file" id="file-input" name="file" onchange="uploadFile()">
+            </form>
+
+            <p id="conexao-status-display" style="font-style: italic; color: red; margin-top: 10px;"></p>
+            
+        </div>
+    </div>
+</div>
+<script src="/static/js/client.js"></script>
+</body>
+</html>
